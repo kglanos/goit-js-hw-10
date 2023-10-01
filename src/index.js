@@ -14,7 +14,7 @@ const reference = {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    reference.loader.classList.add("visible");
+    reference.loader.classList.add('visible');
 });
 
 
@@ -30,21 +30,20 @@ fetchBreeds()
         .join(' ');
 
         reference.breedSelect.insertAdjacentHTML('afterbegin', markupSelect);
+        reference.loader.classList.remove('visible');
+        reference.loader.classList.add('hidden');
 
         const slimSelect = new SlimSelect({
             select: reference.breedSelect,
             placeholder: 'Please, select a cat',
             showSearch: true,
         });
-
-        reference.loader.classList.remove("visible");
-        reference.loader.classList.add("hidden");
 })
 
 .catch(error => {
     console.error(error);
-    reference.loader.classList.remove("visible");
-    reference.loader.classList.add("hidden");
+    reference.loader.classList.remove('visible');
+    reference.loader.classList.add('hidden');
     Notiflix.Notify.failure('An error occurred while fetching breeds.');
 });
 
@@ -53,19 +52,18 @@ reference.breedSelect.addEventListener('change', onchange);
 function onchange(event) {
     const breedId = reference.breedSelect.value;
 
-    reference.loader.classList.remove("hidden");
-    reference.loader.classList.add("visible");
+    
+    reference.loader.classList.add('visible');
 
     fetchCatByBreed(breedId)
         .then(catInfo => {
             if(catInfo.length === 0) {
-                reference.loader.classList.remove("visible");
-                reference.loader.classList.add("hidden");
-                reference.catInfo.classList.add("hidden");
+                reference.loader.classList.remove('visible');
+                reference.loader.classList.add('hidden');
                 Notiflix.Notify.warning('No cats found.');
             } else {
-                reference.error.classList.add("hidden");
-                reference.catInfo.classList.remove("hidden");
+                reference.error.classList.add('hidden');
+                reference.catInfo.classList.remove('hidden');
         
                 const liArray = catInfo.map(cat => {
                     const { url, breeds } = cat;
@@ -87,18 +85,16 @@ function onchange(event) {
                 const markup = liArray.join(' ');
                 reference.catInfo.innerHTML = markup;
 
-                reference.loader.classList.remove("visible");
-                reference.loader.classList.add("hidden");
+                reference.loader.classList.remove('visible');
+                reference.loader.classList.add('hidden');
             }
         })
         .catch(error => {
             console.error(error);
-            reference.loader.classList.remove("visible");
-            reference.loader.classList.add("hidden");
+            reference.loader.classList.remove('visible');
+            reference.loader.classList.add('hidden');
+            reference.catInfo.classList.add('hidden')
             Notiflix.Notify.failure('An error occurred while fetching cat information.');
-        })
-        .finally(() => {
-            reference.loader.classList.remove("visible")
         })
 }
 
