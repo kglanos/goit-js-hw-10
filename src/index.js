@@ -15,6 +15,7 @@ const reference = {
 
 document.addEventListener('DOMContentLoaded', function() {
     reference.loader.classList.add('visible');
+    reference.error.classList.add('hidden');
 });
 
 
