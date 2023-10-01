@@ -23,9 +23,33 @@ img {
     gap: 20px;
 }
 
-.cat-image {
+.image-cat {
     width: 360px;
-    
+}
+
+.title {
+    text-align: left;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.first-text{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+}
+
+.second-text {
+    text-align: left;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.cat-info {
+    background-color:rgb(86, 93, 124);
 }
 
 .loader {
